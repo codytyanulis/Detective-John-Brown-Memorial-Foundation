@@ -1,6 +1,137 @@
-git init
-git add .
-git commit -m "Initial commit of foundation site"
-git branch -M main
-git remote add origin https://github.com/YOURUSERNAME/johnbrownfoundation.git
-git push -u origin main
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, HeartHandshake, Calendar, FileText } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function FoundationWebsite() {
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      {/* Hero (image must be in /public/images/thin-blue-line.webp) */}
+      <section className="relative h-[80vh] text-white">
+        <img
+          src="/images/thin-blue-line.webp"
+          alt="Thin blue line American flag honoring law enforcement"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 max-w-5xl mx-auto h-full flex flex-col justify-center text-center px-6"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Detective John Brown Memorial Foundation
+          </h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto">
+            Honoring Detective John Brown’s legacy through community service and support for those affected by major crimes.
+          </p>
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            <Button className="rounded-2xl">Donate</Button>
+            <Button variant="outline" className="rounded-2xl text-white border-white">
+              Get Involved
+            </Button>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* About */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl font-semibold mb-4">Our Vision</h2>
+            <p className="leading-relaxed">
+              Detective John Brown Memorial Foundation’s vision is to create a world where every victim of major crime receives the compassion and support they deserve. We strive to empower survivors to rebuild their lives with dignity and hope by ensuring access to critical resources.
+            </p>
+          </div>
+          <Card className="rounded-2xl shadow-lg">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold mb-2">Our Purpose</h3>
+              <p>
+                We are a dedicated organization supporting victims of major crime and the law enforcement officers who fight for justice, committed to fostering recovery and resilience for those affected.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Memorial */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold mb-4">Detective John Brown</h2>
+          <p className="max-w-3xl mx-auto">
+            Detective John Brown dedicated his life to protecting others and serving with integrity, courage, and compassion. This foundation stands as a living tribute to his sacrifice and commitment to justice.
+          </p>
+        </div>
+      </section>
+
+      {/* Programs & Impact */}
+      <section className="py-16 px-6 bg-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-semibold text-center mb-12">Programs & Impact</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="rounded-2xl">
+              <CardContent className="p-6">
+                <HeartHandshake className="mb-3" />
+                <h3 className="font-semibold mb-2">Community Support</h3>
+                <p>Providing resources and assistance to individuals and families affected by crime.</p>
+              </CardContent>
+            </Card>
+            <Card className="rounded-2xl">
+              <CardContent className="p-6">
+                <Calendar className="mb-3" />
+                <h3 className="font-semibold mb-2">Events & Fundraisers</h3>
+                <p>Hosting events that raise awareness, foster unity, and fund our outreach programs.</p>
+              </CardContent>
+            </Card>
+            <Card className="rounded-2xl">
+              <CardContent className="p-6">
+                <FileText className="mb-3" />
+                <h3 className="font-semibold mb-2">Meeting Minutes</h3>
+                <p>Securely storing and sharing official meeting minutes for transparency and members.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Donate */}
+      <section className="py-16 px-6 bg-blue-800 text-white text-center">
+        <h2 className="text-3xl font-semibold mb-4">Support Our Mission</h2>
+        <p className="max-w-2xl mx-auto mb-6">
+          Your donation helps us support victims of major crime, the law enforcement officers who fight for justice, and continue Detective John Brown’s legacy.
+        </p>
+        <Button className="rounded-2xl bg-white text-blue-800">Make a Donation</Button>
+      </section>
+
+      {/* Contact */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-3xl font-semibold mb-4">Contact & Outreach</h2>
+            <p>Reach out to learn more, partner with us, or join our mailing list.</p>
+          </div>
+          <Card className="rounded-2xl shadow-lg">
+            <CardContent className="p-6">
+              <h3 className="font-semibold mb-3">Join Our Email List</h3>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  className="flex-1 p-2 rounded-xl border"
+                />
+                <Button className="rounded-2xl">
+                  <Mail />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-200 py-6 text-center text-sm">
+        © {new Date().getFullYear()} Detective John Brown Memorial Foundation. All rights reserved.
+      </footer>
+    </div>
+  );
+}
